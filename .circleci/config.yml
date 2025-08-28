@@ -1,3 +1,4 @@
+# .circleci/config.yml
 version: 2.1
 jobs:
   build-and-test:
@@ -13,3 +14,10 @@ workflows:
   main-workflow:
     jobs:
       - build-and-test
+    triggers:
+      - schedule:
+          cron: "15 8 * * *"
+          filters:
+            branches:
+              only:
+                - main
